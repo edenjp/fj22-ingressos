@@ -81,8 +81,11 @@
                 </div>
             </div>
 
+
+
             <div class="form-group">
                 <div class="col-md-12">
+                     </br>
                     <button type="submit" class="btn btn-primary">Comprar</button>
                 </div>
             </div>

@@ -19,6 +19,10 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Sessao {
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
