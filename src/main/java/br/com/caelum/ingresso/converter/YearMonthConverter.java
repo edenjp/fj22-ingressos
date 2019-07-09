@@ -9,6 +9,6 @@ public class YearMonthConverter implements Converter<String, YearMonth> {
 	
 	@Override
 	public YearMonth convert(String text) {
-		return YearMonth.parse(text, DateTimeFormatter.ofPattern("MM/yyyyy"));
+		return YearMonth.parse(text, DateTimeFormatter.ofPattern("MM/yyyy"));
 	}
 }
