@@ -21,6 +21,7 @@ import br.com.caelum.ingresso.dao.FilmeDao;
 import br.com.caelum.ingresso.dao.SalaDao;
 import br.com.caelum.ingresso.dao.SessaoDao;
 import br.com.caelum.ingresso.model.Sessao;
+import br.com.caelum.ingresso.model.TipoDeIngresso;
 import br.com.caelum.ingresso.model.form.SessaoForm;
 import br.com.caelum.ingresso.validacao.GerenciadorDeSessao;
 
@@ -34,6 +35,9 @@ public class SessaoController {
 	
 	@Autowired
 	private SessaoDao sessaoDao;	
+	
+	@Autowired
+	private OmdbClient client;
 
 	@GetMapping("/admin/sessao")
 	public ModelAndView form(@RequestParam("salaId") Integer salaId, SessaoForm form) {
@@ -70,11 +74,11 @@ public class SessaoController {
 
 		Sessao sessao = sessaoDao.findOne(sessaoId);
 
-		OmdbClient client = new OmdbClient();
 		Optional<ImagemCapa> imagemCapa = client.request(sessao.getFilme(), ImagemCapa.class);
 
 		modelAndView.addObject("sessao", sessao);
 		modelAndView.addObject("imagemCapa", imagemCapa.orElse(new ImagemCapa()));
+		modelAndView.addObject("tiposDeIngressos", TipoDeIngresso.values());
 
 		return modelAndView;
 	}
